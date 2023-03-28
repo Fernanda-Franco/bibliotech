@@ -1,8 +1,10 @@
+import { async } from "@firebase/util";
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
 } from "firebase/auth";
   import { auth } from "./config";
   
@@ -30,4 +32,9 @@ import {
     const resultado = await signInWithEmailAndPassword(auth, email, senha);
   
     return resultado.user;
+  }
+
+  export async function logout(){
+    //Deslogar o usuario atual do firebase
+    await signOut(auth);
   }
